@@ -3,7 +3,7 @@
 
 config/private/
 
-modpacks/lite_pack/src/mods/
+modpacks/*/src/mods
 Launcher/
 cfpecker/
 

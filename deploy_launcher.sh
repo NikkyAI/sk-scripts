@@ -12,7 +12,7 @@ json_name=latest
 _fancy=-dark
 
 cd $DIR
-mkdir $upload_folder
+mkdir --parent $upload_folder
 
 function copy () {
     FOLDER="$launcher/$1/build/libs/"
