@@ -1,8 +1,6 @@
 #!/bin/bash
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-# server='pp-treedi_l2jlj@mc.nikky.moe'
-#remote_path='public/mods'
 modpacks=( penguins_retreat )
 
 cd $DIR
@@ -69,21 +67,12 @@ function reset_functions () {
     function start() {
         echo 'START DEFAULT TMUX IMPLEMENTATION'
         send "java -jar forge.jar"
-        # send "say server startup finished"
-        # curl -k -X GET \
-        #     -H "X-Access-Server: 8d42fdc4-95be-471b-98d2-55ee586613f2" \
-        #     -H "X-Access-Token: 43903004-9a32-48b5-bf09-4e940efa6191"  \
-        #     "https://mc.nikky.moe:5656/server/power/on"
     }
 
     function stop() {
         echo 'STOP DEFAULT TMUX IMPLEMENTATION'
         send "say restarting server"
         send "stop"
-        # curl -k -X GET \
-        #     -H "X-Access-Server: 8d42fdc4-95be-471b-98d2-55ee586613f2" \
-        #     -H "X-Access-Token: 43903004-9a32-48b5-bf09-4e940efa6191"  \
-        #     "https://mc.nikky.moe:5656/server/power/off" \
     }
 }
 
