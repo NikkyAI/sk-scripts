@@ -1,0 +1,20 @@
+{
+  "name" : "penguins_retreat",
+  "title" : "penguins retreat",
+  "gameVersion" : "1.10.2",
+  "features" : [ ],
+  "userFiles" : {
+    "include" : [
+      "options.txt",
+      "optionsshaders.txt",
+      "servers.dat",
+      "ambience_music"
+    ],
+    "exclude" : [ ]
+  },
+  "launch" : {
+    "flags" : [
+      "-Dfml.ignoreInvalidMinecraftCertificates=true"
+    ]
+  }
+}
