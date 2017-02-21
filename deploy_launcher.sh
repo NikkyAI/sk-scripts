@@ -2,7 +2,7 @@
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 launcher=Launcher
 upload_folder=$DIR/.upload/.launcher/
-tools=.
+tools=tools
 
 URLBASE="https://nikky.moe/mc/.launcher"
 echo $DIR
@@ -58,11 +58,12 @@ function pack () {
     pack200 --no-gzip $DEST $FILE
 }
 
-cd $launcher
-
-git pull
+cd $DIR
+# git pull
+git -C Launcher pull || git clone https://github.com/NikkyAI/Launcher.git Launcher
 #clean build
 #$DIR/$launcher/gradlew -p $launcher/ clean build
+cd $launcher
 ./gradlew clean build
 
 cd $DIR

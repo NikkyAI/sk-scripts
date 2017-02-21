@@ -7,7 +7,7 @@ cd $DIR
 mkdir $upload_folder
 for modpack in "${modpacks[@]}"; do
     version=${modpack}_`date +%Y.%m.%d.%H%M%S`
-    java -jar $DIR/launcher-builder.jar \
+    java -jar $DIR/tools/launcher-builder.jar \
         --version $version \
         --input $DIR/modpacks/$modpack \
         --output $upload_folder \

@@ -1,0 +1,14 @@
+
+\.idea/
+
+config/private/
+
+modpacks/lite_pack/src/mods/
+Launcher/
+cfpecker/
+
+.upload/
+
+modlist\.txt
+
+tools/
