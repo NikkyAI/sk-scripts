@@ -77,7 +77,6 @@ function reset_functions () {
 }
 
 for modpack in "${modpacks[@]}"; do
-    remote_path=${remote_mcpath:-$modpack}
     reset_functions
     temp_folder=/tmp/server_upload/$modpack
     modpack_folder=$DIR/modpacks/$modpack
@@ -86,12 +85,13 @@ for modpack in "${modpacks[@]}"; do
     if [ -f $modpack_folder/deploy.sh ] ; then
         echo 'executing modpack deploy script'
         . $modpack_folder/deploy.sh
+        remote_path=${remote_mcpath:-$modpack}
     fi
     #cleanup
     rm -R $temp_folder/mods
 
     # Create server mod upload
-    java -cp launcher-builder.jar com.skcraft.launcher.builder.ServerCopyExport \
+    java -cp $DIR/tools/launcher-builder.jar com.skcraft.launcher.builder.ServerCopyExport \
     --source modpacks/$modpack/src \
     --dest $temp_folder
     
