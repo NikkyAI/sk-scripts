@@ -1,7 +1,7 @@
 #!/bin/bash
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-modpacks=( penguins_retreat )
+modpacks=( test_pack )
 
 cd $DIR
 
@@ -26,7 +26,7 @@ function reset_functions () {
     function upload () {
         echo 'DEFAULT RSYNC IMPLEMENTATION'
         FOLDER=$1
-        DESTINATION=${remote_mcpath:-public}/${2}
+        DESTINATION=$remote_path/${2}
         
         if [ -z ${server+x} ]; then 
             echo "server is unset"
@@ -43,7 +43,7 @@ function reset_functions () {
         fi
     }
     function ssh_send () {
-        ssh $server -p ${remote_port:-"22"} "cd ${remote_mcpath:-public}; $1"
+        ssh $server -p ${remote_port:-"22"} "cd $remote_path; $1"
     }
     function send () {
         ssh_send "tmux new-session -d -s mc -n forge"
@@ -77,6 +77,7 @@ function reset_functions () {
 }
 
 for modpack in "${modpacks[@]}"; do
+    remote_path=${remote_mcpath:-$modpack}
     reset_functions
     temp_folder=/tmp/server_upload/$modpack
     modpack_folder=$DIR/modpacks/$modpack
