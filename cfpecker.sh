@@ -10,9 +10,11 @@ git -C cfpecker pull || git clone https://github.com/NikkyAI/cfpecker.git cfpeck
 
 # ./cfpecker
 python $DIR/cfpecker/bin/cfpecker.py
-
+retval=$?
 # copy local files into mods folder #TODO make this happen inside cfpecker with better configurability
 for D in `find modpacks/* -maxdepth 0 -type d`
 do
-    [ -d $D/local ] && rsync -avz $D/local/* $D/src/mods/
+    [ ! -d $D/local ] || rsync -avz $D/local/* $D/src/mods/
 done
+
+exit $retval
