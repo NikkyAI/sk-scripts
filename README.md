@@ -1,0 +1,1 @@
+`git -C sktools pull || git clone https://github.com/NikkyAI/sktools.git sktools`

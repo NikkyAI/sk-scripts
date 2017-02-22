@@ -11,11 +11,11 @@ $packages[] = array(
 );
 
 $packages[] = array(
-    'name' => 'penguins_retreat',
-    'title' => 'penguins retreat',
-    'version' => trim(file_get_contents('penguins_retreat/version.txt')),
+    'name' => 'test_pack',
+    'title' => 'Test Pack',
+    'version' => trim(file_get_contents('test_pack/version.txt')),
     'priority' => 0,
-    'location' => 'penguins_retreat.json',
+    'location' => 'test_pack.json',
 );
 
 $out = array('minimumVersion' => 1, 'packages' => $packages);

@@ -14,6 +14,5 @@ python $DIR/cfpecker/bin/cfpecker.py
 # copy local files into mods folder #TODO make this happen inside cfpecker with better configurability
 for D in `find modpacks/* -maxdepth 0 -type d`
 do
-    echo $D
-    rsync -avz $D/local/* $D/src/mods/
+    [ -d $D/local ] && rsync -avz $D/local/* $D/src/mods/
 done

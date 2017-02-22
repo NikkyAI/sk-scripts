@@ -1,0 +1,18 @@
+{
+  "name" : "test_pack",
+  "title" : "Experimental Test Pack",
+  "gameVersion" : "1.10.2",
+  "features" : [ ],
+  "userFiles" : {
+    "include" : [
+      "options.txt",
+      "optionsshaders.txt"
+    ],
+    "exclude" : [ ]
+  },
+  "launch" : {
+    "flags" : [
+      "-Dfml.ignoreInvalidMinecraftCertificates=true"
+    ]
+  }
+}

@@ -24,7 +24,7 @@ function copy () {
 
     echo "file: $ARG2"
     echo "version: $VERSION"
-    cp -v $FILE $DEST
+    cp -vp $FILE $DEST
     echo
 }
 
@@ -46,8 +46,10 @@ function pack () {
     PACK_FILE="$ARG2.pack"
     DEST="$upload_folder/$PACK_FILE"
     FILE=$( find $FOLDER | grep all | sort -n | tail -1 )
-    VERSION=$( echo $FILE | sed 's/[^0-9\.]*\([0-9\.]*-[a-Z]*\)-all.jar/\1/' )
-
+    # VERSION=$( echo $FILE | sed 's/[^0-9\.]*\([0-9\.]*-[a-Z]*\)-all.jar/\1/' )
+    VERSION=$( git -C $launcher rev-parse HEAD )
+        
+    
     json_string=$(json $VERSION $PACK_FILE $3)
     echo $json_string
 

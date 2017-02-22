@@ -4,6 +4,7 @@
 config/private/
 
 modpacks/*/src/mods
+modpacks/.modpacks/staging
 Launcher/
 cfpecker/
 
