@@ -22,9 +22,10 @@ function copy () {
     FILE=$( find $FOLDER | grep all | sort -n | tail -1 )
     VERSION=$( echo $FILE | sed 's/[^0-9\.]*\([0-9\.]*-[a-Z]*\)-all.jar/\1/' )
 
+    mkdir -p $ARG3
     echo "file: $ARG2"
     echo "version: $VERSION"
-    cp -vp $FILE $DEST
+    cp -v $FILE $DEST
     echo
 }
 
