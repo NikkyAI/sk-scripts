@@ -4,7 +4,8 @@ upload_folder=$DIR/.upload/modpacks
 modpacks=( lite_pack penguins_retreat )
 
 cd $DIR
-mkdir $upload_folder
+mkdir --parent $upload_folder
+[ ! -f $DIR/tools/launcher-builder.jar ] && ./deploy_launcher.sh
 for modpack in "${modpacks[@]}"; do
     version=${modpack}_`date +%Y.%m.%d.%H%M%S`
     java -jar $DIR/tools/launcher-builder.jar \
