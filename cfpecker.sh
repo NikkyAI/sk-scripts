@@ -8,8 +8,10 @@ cd $DIR
 
 git -C cfpecker pull || git clone https://github.com/NikkyAI/cfpecker.git cfpecker
 
+sudo pip install cfpecker
+
 # ./cfpecker
-python $DIR/cfpecker/bin/cfpecker.py
+python $DIR/cfpecker/bin/cfpecker
 retval=$?
 ## copy local files into mods folder #TODO make this happen inside cfpecker with better configurability
 #for D in `find modpacks/* -maxdepth 0 -type d`
