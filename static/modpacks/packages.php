@@ -3,6 +3,13 @@ $keys = isset($_GET['key']) ? array_map('trim', explode(',', strtolower($_GET['k
 $packages = array();
 
 $packages[] = array(
+    'name' => 'fuckitbrokeagain',
+    'title' => 'Fuck it broke again',
+    'version' => trim(file_get_contents('fuckitbrokeagain/version.txt')),
+    'priority' => 0,
+    'location' => 'fuckitbrokeagain.json',
+);
+$packages[] = array(
     'name' => 'lite_pack',
     'title' => 'Lite pack',
     'version' => trim(file_get_contents('lite_pack/version.txt')),

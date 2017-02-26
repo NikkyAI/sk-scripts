@@ -1,8 +1,6 @@
 #!/bin/bash
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-modpacks=( test_pack )
-
 cd $DIR
 
 # A POSIX variable
@@ -10,11 +8,13 @@ OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
 setup=false
 
-while getopts "sh" opt; do
+while getopts "shp:" opt; do
   case $opt in
     s)
       echo "-s was triggered!" >&2
       setup=true
+      ;;
+    p) modpacks+=("$OPTARG")
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2

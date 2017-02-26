@@ -1,7 +1,7 @@
 #!/bin/bash
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 upload_folder=$DIR/.upload/modpacks
-modpacks=( test_pack lite_pack penguins_retreat )
+modpacks=( fuckitbrokeagain test_pack )
 
 cd $DIR
 mkdir --parent $upload_folder
