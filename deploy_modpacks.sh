@@ -1,9 +1,10 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 upload_folder=$DIR/.upload/modpacks
 
-cd modpacks
-modpacks=( ^local* )
+#cd modpacks
+#modpacks=( ^local* )
+modpacks=( fuckitbrokeagain lite_pack penguins_retreat test_pack )
 
 cd $DIR
 mkdir --parent $upload_folder
