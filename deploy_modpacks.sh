@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 upload_folder=$DIR/.upload/modpacks
 
