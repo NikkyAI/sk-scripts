@@ -36,11 +36,11 @@ done
 
 #cd $DIR
 
-echo "\`\`\`" > $upload_folder/_h5ai.footer.md
-tree modpacks \
-    -P "*.jar|*.cfg|*.yml" \
-    -I .upload \
-    >> $upload_folder/_h5ai.header.md
-echo "\`\`\`" >> $upload_folder/_h5ai.footer.md
+#echo "\`\`\`" > $upload_folder/_h5ai.footer.md
+#tree modpacks \
+#    -P "*.jar|*.cfg|*.yml" \
+#    -I .upload \
+#    >> $upload_folder/_h5ai.header.md
+#echo "\`\`\`" >> $upload_folder/_h5ai.footer.md
 
 $DIR/upload.sh
