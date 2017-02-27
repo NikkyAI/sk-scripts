@@ -20,7 +20,7 @@ print(check_output(['pwd']))
 
 html = check_output(['tree', 'modpacks/{args.pack}/src'.format(**locals()),
                      '-T', 'Directory Listing', # '-P', 'mods|mods/*.*|mods/*', '--matchdirs',
-                     '-I', 'ambience_music|config|loaders|*.url.txt|*.info.json',
+                     '-I', 'ambience_music|default_config|config|loaders|*.url.txt|*.info.json',
                      '--sort=name',
                      '--noreport', '--dirsfirst',
                      '-H', 'https://nikky.moe/mc/modpacks/{args.pack}/src'.format(**locals())

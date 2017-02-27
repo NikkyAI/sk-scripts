@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/zsh
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 upload_folder=$DIR/.upload/modpacks
-modpacks=( fuckitbrokeagain test_pack )
+
+cd modpacks
+modpacks=( ^local* )
 
 cd $DIR
 mkdir --parent $upload_folder
@@ -33,11 +35,11 @@ done
 
 #cd $DIR
 
-echo "\`\`\`" > $upload_folder/_h5ai.header.md
+echo "\`\`\`" > $upload_folder/_h5ai.footer.md
 tree modpacks \
     -P "*.jar|*.cfg|*.yml" \
-    -I _upload \
+    -I .upload \
     >> $upload_folder/_h5ai.header.md
-echo "\`\`\`" >> $upload_folder/_h5ai.header.md
+echo "\`\`\`" >> $upload_folder/_h5ai.footer.md
 
 $DIR/upload.sh
