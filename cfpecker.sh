@@ -8,7 +8,7 @@ cd $DIR
 
 git -C cfpecker pull || git clone https://github.com/NikkyAI/cfpecker.git cfpecker
 
-sudo pip install cfpecker
+sudo pip install ./cfpecker
 
 # ./cfpecker
 python $DIR/cfpecker/bin/cfpecker
