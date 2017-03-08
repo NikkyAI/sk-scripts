@@ -2,9 +2,9 @@
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 upload_folder=$DIR/.upload/modpacks
 
-#cd modpacks
-#modpacks=( ^local* )
-modpacks=( fuckitbrokeagain lite_pack penguins_retreat test_pack )
+cd modpacks
+modpacks=( * )
+#modpacks=( fuckitbrokeagain cpack )
 
 cd $DIR
 mkdir --parent $upload_folder
