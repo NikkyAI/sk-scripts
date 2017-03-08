@@ -10,6 +10,13 @@ $packages[] = array(
     'location' => 'fuckitbrokeagain.json',
 );
 $packages[] = array(
+    'name' => 'cpack',
+    'title' => 'Copy Pack',
+    'version' => trim(file_get_contents('cpack/version.txt')),
+    'priority' => 0,
+    'location' => 'cpack.json',
+);
+$packages[] = array(
     'name' => 'lite_pack',
     'title' => 'Lite pack',
     'version' => trim(file_get_contents('lite_pack/version.txt')),
