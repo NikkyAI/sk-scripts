@@ -11,7 +11,7 @@ $packages[] = array(
 );
 $packages[] = array(
     'name' => 'cpack',
-    'title' => 'Copy Pack',
+    'title' => 'copy pack',
     'version' => trim(file_get_contents('cpack/version.txt')),
     'priority' => 0,
     'location' => 'cpack.json',
