@@ -66,7 +66,7 @@ function reset_functions () {
 
     function start() {
         echo 'START DEFAULT TMUX IMPLEMENTATION'
-        send "java -jar forge.jar"
+        send "./start.sh"
     }
 
     function stop() {
