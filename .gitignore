@@ -12,7 +12,7 @@ sktools/
 
 tools/
 
-static/*
+static/
 
 config.sh
 
