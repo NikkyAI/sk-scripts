@@ -1,17 +1,18 @@
 #!/usr/bin/zsh
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+echo $DIR
 launcher=Launcher
 upload_folder=$DIR/.upload/.launcher/
 tools=tools
 
-URLBASE="https://nikky.moe/mc/.launcher"
-echo $DIR
+
 name=launcher
 pack_name=launcher
 json_name=latest
-_fancy=-dark
+_fancy=-fancy
 
 cd $DIR
+source config.sh
 mkdir --parent $upload_folder
 
 function copy () {
@@ -47,7 +48,6 @@ function pack () {
     PACK_FILE="$ARG2.pack"
     DEST="$upload_folder/$PACK_FILE"
     FILE=$( find $FOLDER | grep all | sort -n | tail -1 )
-    # VERSION=$( echo $FILE | sed 's/[^0-9\.]*\([0-9\.]*-[a-Z]*\)-all.jar/\1/' )
     VERSION=$( git -C $launcher rev-parse HEAD )
         
     
@@ -62,10 +62,8 @@ function pack () {
 }
 
 cd $DIR
-# git pull
-git -C Launcher pull || git clone https://github.com/NikkyAI/Launcher.git Launcher
-#clean build
-#$DIR/$launcher/gradlew -p $launcher/ clean build
+
+git -C $launcher pull || git clone $GIT_LAUNCHER $launcher # TODO: uncomment after remote is up to date
 cd $launcher
 ./gradlew clean build
 
@@ -87,7 +85,7 @@ echo
 echo "package launcher jars from $launcher into $upload_folder"
 
 pack launcher "$pack_name.jar" $json_name.json
-pack launcher-fancy "$pack_name-dark.jar" $json_name$_fancy.json
+pack launcher-fancy "$pack_name$_fancy.jar" $json_name$_fancy.json
 
 cd $DIR
 $DIR/upload.sh

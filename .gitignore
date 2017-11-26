@@ -1,15 +1,18 @@
 
 \.idea/
 
-config/private/
+config/
+modpacks/
 
-modpacks/*/src/mods
-modpacks/.modpacks/staging
 Launcher/
-cfpecker/
+
+sktools/
 
 .upload/
 
-modlist\.txt
-
 tools/
+
+static/*
+
+config.sh
+

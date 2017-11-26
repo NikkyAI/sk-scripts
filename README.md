@@ -1,17 +1,34 @@
-`git -C sktools pull || git clone https://github.com/NikkyAI/sktools.git sktools`
+# voodoo-scripts
 
-local testing and modpack editing:
-- create `config/private/auth.conf`
-- open creator-tools and open the folder `modpacks`
-- edit the corresponding modpack `.conf` file
-- run cfpecker
+## setuo and getting started
 
-### TODO
-- private/auth create scaffold
-- local file handling
-- usng gradle to build mods from git ?
-- improve maven handling (get version list and match to get latest)
-- jitpack ?
-- Launcher
-    - improve file copying to read from config
-    - extract zips
+1. install and set up voodoo-pack https://github.com/NikkyAI/voodoo-pack
+
+2. symlink config and modpacks to your pack development environment \
+   this is recommended to avoid loosing gitignored files
+
+    ```bash
+    dev=~/dev/voodoo-pack
+    ln -s $dev/modpacks/ modpacks/
+    ln -s $dev/config/ config/
+    ln -s $(pwd)/tools $dev/tools
+    ```
+
+3. make sure your fork of sklauncher is ready \
+   https://github.com/SKCraft/Launcher \
+   at the moment the script expects a specific  \
+   fork that adds more targets though \
+   https://github.com/NikkyAI/Launcher
+
+4. configure the scripts
+
+    ```bash
+    cp config.sample.sh config.sh
+    ```
+
+4. run
+
+    ```bash
+    ./deploy_launcher.sh
+    ./deploy_modpack.sh
+    ```

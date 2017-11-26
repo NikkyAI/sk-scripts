@@ -2,8 +2,10 @@
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 upload_folder=$DIR/.upload/modpacks
 
+source $DIR/config.sh
+
 cd modpacks
-modpacks=( * )
+modpacks=$MODPACKS
 #modpacks=( fuckitbrokeagain cpack )
 
 cd $DIR
@@ -25,7 +27,7 @@ for modpack in "${modpacks[@]}"; do
 
     mkdir $upload_folder/$modpack
 
-    $DIR/filetree.py \
+    $DIR/scripts/filetree.py \
         --out $upload_folder/$modpack/index.html \
         --pack $modpack
 
@@ -34,6 +36,8 @@ for modpack in "${modpacks[@]}"; do
     cat $upload_folder/$modpack/version.txt
 done
 
+#TODO: generate packages.json
+python script/packages.py --dir $DIR/.upload/modpacks $modpacks
 #cd $DIR
 
 #echo "\`\`\`" > $upload_folder/_h5ai.footer.md
