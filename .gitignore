@@ -1,7 +1,6 @@
 
 \.idea/
 
-config/
 modpacks/
 
 Launcher/
@@ -16,6 +15,6 @@ tools/
 
 static/
 
-config.sh
-
 server/
+
+config/

@@ -22,15 +22,20 @@
 
 4. configure the scripts
 
+    copy the sample files
+
     ```bash
-    cp config.sample.sh config.sh
+    rsync -a --update samples/ .
     ```
+
+    adapt it
 
 4. run
 
     ```bash
-    ./deploy_launcher.sh
-    ./deploy_modpack.sh
+    ./launcher_deploy.sh
+    ./modpack_deploy.sh
+    ./server_upload.sh -install
     ```
 
 
