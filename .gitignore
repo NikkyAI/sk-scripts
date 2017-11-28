@@ -10,9 +10,12 @@ sktools/
 
 .upload/
 
+.server/
+
 tools/
 
 static/
 
 config.sh
 
+server/

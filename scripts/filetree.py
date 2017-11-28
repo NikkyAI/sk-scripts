@@ -11,9 +11,9 @@ import os
 from subprocess import check_output
 
 parser = argparse.ArgumentParser(description="patch output of tree to use the correct urls")
-parser.add_argument("--dir", help="dir")
 parser.add_argument("--out", help="output file")
 parser.add_argument("--pack", help="pack name")
+parser.add_argument("--url", help="base url")
 args, unknown = parser.parse_known_args()
 
 print(check_output(['pwd']))
@@ -23,12 +23,12 @@ html = check_output(['tree', 'modpacks/{args.pack}/src'.format(**locals()),
                      '-I', 'ambience_music|default_config|config|loaders|*.url.txt|*.info.json',
                      '--sort=name',
                      '--noreport', '--dirsfirst',
-                     '-H', 'https://nikky.moe/mc/modpacks/{args.pack}/src'.format(**locals())
+                     '-H', f'{args.url}modpacks/{args.pack}/src'
                       ])
 
 print(html)
 
-pattern = r'https://nikky.moe/mc/modpacks/{args.pack}/src/(?P<mod>.+)'.format(**locals())
+pattern = rf'{args.url}modpacks/{args.pack}/src/(?P<mod>.+)'
 
 soup = BeautifulSoup(html)
 for anchor in soup.find_all('a', href=True):

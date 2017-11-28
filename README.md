@@ -32,3 +32,9 @@
     ./deploy_launcher.sh
     ./deploy_modpack.sh
     ```
+
+
+## gotchas
+
+keep the spaces away, due to bash quoting and general insanity, it WILL BREAK
+that means use `~/server/pack_name` instead of `~/server/pack name`

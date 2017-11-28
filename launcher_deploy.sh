@@ -32,7 +32,7 @@ function copy () {
 
 function json () {
     VERSION=${1:-VERSION}
-    URL=$URLBASE/${2:-no_file_provided}
+    URL=$URLBASE$LAUNCHER/${2:-no_file_provided}
     JSONFILE=$upload_folder${3:-"$(basename $URL ".jar.pack").json"}
 
     json="{\n \"version\": \"$VERSION\",\n \"url\": \"$URL\"\n}"
@@ -63,7 +63,7 @@ function pack () {
 
 cd $DIR
 
-git -C $launcher pull || git clone $GIT_LAUNCHER $launcher # TODO: uncomment after remote is up to date
+rsync $LAUNCHER_SRC $launcher
 cd $launcher
 ./gradlew clean build
 

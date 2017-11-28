@@ -29,7 +29,8 @@ for modpack in "${modpacks[@]}"; do
 
     $DIR/scripts/filetree.py \
         --out $upload_folder/$modpack/index.html \
-        --pack $modpack
+        --pack $modpack \
+        --url $URLBASE
 
     echo -e "$version" > $upload_folder/$modpack/version.txt
     echo $upload_folder/$modpack/version.txt
