@@ -4,8 +4,9 @@ DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 [ -f $DIR/config.sh ] && source $DIR/config.sh
 
-loader_version='from file in loaders'
-pack_version='from.. ?' # to check if update / restart is required
+# TODO:
+# loader_version='from file in loaders'
+# pack_version='from.. ?' # to check if update / restart is required
 
 # SRC_PATH='server/export'
 # START_COMMAND='java -jar forge.jar'
@@ -21,6 +22,8 @@ SRC_PATH="$SRC_PATH"
 RUN_DIR="$RUN_DIR"
 
 mkdir $RUN_DIR --parents
+
+cd $RUN_DIR
 
 function send () {
     # create session if not started already
@@ -143,7 +146,7 @@ function install_forge () {
         sed -i 's/eula=false/eula=true/' eula.txt
     fi
 
-    #TODO: restart server if it ran before
+    # restart server if it ran before
     if [ "$running" -eq "0" ] ; then
         start
     fi
@@ -164,7 +167,7 @@ function install_script () {
 function update () {
 
     [ -d $SRC_PATH/$PACK/src/ ] && rsync -a --update $SRC_PATH/$PACK/src/ $RUN_DIR/
-    # TODO: compare versions and stop ?
+    # TODO: compare versions and stop if they match ?
 
     install_forge
 
@@ -208,4 +211,5 @@ case "$1" in
     # exit 1
     ;;
 esac
+
 cd $PDIR
