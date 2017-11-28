@@ -63,9 +63,9 @@ for modpack in "${MODPACKS[@]}"; do
     case "$1" in
     "-install")
         if [ -z $"SERVER" ]; then
-            "$SRC_PATH_RESOLVED/$PACK/update.sh" update
+            "$SRC_PATH_RESOLVED/$PACK/server.sh" update
         else
-            ssh $SERVER "$SRC_PATH/$PACK/update.sh update"
+            ssh $SERVER "$SRC_PATH/$PACK/server.sh update"
         fi
         ;;
     *)
