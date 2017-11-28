@@ -47,7 +47,7 @@ for modpack in "${MODPACKS[@]}"; do
     # create the config file for this modpack
     
     envsubst < "$DIR/scripts/template_config.sh" > "$upload_folder/config.sh"
-    cp "$DIR/scripts/server_update.sh"  "$upload_folder/server.sh"
+    cp "$DIR/scripts/dumb_updater.sh"  "$upload_folder/update.sh"
     #upload
     if [ -z $"SERVER" ]; then
         #upload locally
@@ -61,11 +61,11 @@ for modpack in "${MODPACKS[@]}"; do
     fi 
     
     case "$1" in
-    "-install")
+    "-update")
         if [ -z $"SERVER" ]; then
-            "$SRC_PATH_RESOLVED/$PACK/server.sh" update
+            "$SRC_PATH_RESOLVED/$PACK/update.sh"
         else
-            ssh $SERVER "$SRC_PATH/$PACK/server.sh update"
+            ssh -t $SERVER "$SRC_PATH/$PACK/update.sh"
         fi
         ;;
     *)

@@ -7,4 +7,4 @@ else
     return -1
 fi
 
-export SERVER SRC_PATH START_COMMAND RUN_DIR
+export SERVER SRC_PATH RUN_DIR
