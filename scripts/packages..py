@@ -3,7 +3,6 @@
 
 import argparse
 
-import io
 from pathlib import Path
 import simplejson as json
 
@@ -24,7 +23,7 @@ for pack in args.packs:
     package_entry = dict(
         name=data.get('name'),
         title=data.get('title'),
-        version=data.get('version').ltrim(f'{pack}-'),
+        version=data.get('version').lstrip(f'{pack}-'),
         location=location,
         priority=0
     )

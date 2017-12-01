@@ -1,0 +1,27 @@
+host: &h
+  server: 'nikky.moe'
+  www_root: '~/public_html/'
+  url_base: 'https://nikky.moe/'
+  
+launcher:
+  <<: *h
+  src: '~/dev/Launcher'
+  build: '.launcher'
+  target: '.voodoo/.launcher/'
+
+modpack_default: &pack
+  <<: *h
+  base_folder: 'modpacks'
+  run_dir: '~/minecraft/server/{name}/'
+  target: '.voodoo/modpacks/'
+  install_dir: '~/.cache/voodoo-pack/{name}/'
+
+modpacks:
+  example: 
+    <<: *pack
+    blurb: 'blaaa'
+    folder: 'example_pack'
+  test: 
+    <<: *pack
+    blurb: 'blub'
+    folder: 'resource_test'

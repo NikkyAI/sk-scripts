@@ -1,6 +1,10 @@
 
 \.idea/
 
+__pycache__/
+
+virtualenv/
+
 modpacks/
 
 Launcher/
@@ -10,6 +14,8 @@ sktools/
 .upload/
 
 .server/
+
+.launcher/
 
 tools/
 

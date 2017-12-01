@@ -1,0 +1,8 @@
+{
+    "files.exclude": {
+        "virtualenv/": false
+        "**/__pycache__/": true
+    },
+    "python.moduleName": "voodoo-scripts",
+    "python.pythonPath": "${workspaceRoot}/virtualenv/bin/python"
+}
