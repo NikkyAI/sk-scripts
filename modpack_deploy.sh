@@ -2,9 +2,9 @@
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 upload_folder=$DIR/.upload/modpacks
 
-source $DIR/config.sh
+source $DIR/scripts/server_upload.sh
 
-cd modpacks
+cd $DIR/modpacks
 modpacks=$MODPACKS
 #modpacks=( fuckitbrokeagain cpack )
 

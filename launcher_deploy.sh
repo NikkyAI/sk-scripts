@@ -12,7 +12,7 @@ json_name=latest
 _fancy=-fancy
 
 cd $DIR
-source config.sh
+source $DIR/scripts/server_upload.sh
 mkdir --parent $upload_folder
 
 function copy () {

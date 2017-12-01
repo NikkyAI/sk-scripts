@@ -43,3 +43,42 @@
 
 keep the spaces away, due to bash quoting and general insanity, it WILL BREAK
 that means use `~/server/pack_name` instead of `~/server/pack name`
+
+
+## what the scripts do
+
+### Launcher Deploy `launcher_deploy.sh`
+
+- builds launcher from source
+- copies the 2 bootstrappers into the upload folder
+- copies the compiled tools (creator-tools and launcher-builder) into the tools directory
+- packs the 2 launchers into the upload folder and creates the latest json files
+- trigger `upload.sh`
+
+### Modpack Deploy `modpack_deploy.sh`
+
+- if `tools/launcher-builder` does not exist
+  - trigger `launcher_deploy.sh`
+- for every `$modpack`
+  - build `$modpack`
+  - generate filetree of `$modpack` 
+- generate `packages.json`
+- trigger `upload.sh`
+
+### Server Upload `server_upload.sh`
+
+- for every `$modpack`
+  - load modpack config
+  - build server for `$modpack` (com.skcraft.launcher.builder.ServerCopyExport)
+  - copy server/global into upload directory
+  - copy server/`$modpack` into upload directory
+  - copy update script into upload directory
+  - upload to server (outside of the server run directory)
+  - if `-update`
+    - trigger `update.sh` on server
+
+### Server Update `server_update.sh`
+
+- for every `$modpack`
+  - load modpack config
+  - trigger `update.sh` on server

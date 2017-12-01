@@ -69,7 +69,7 @@ for modpack in "${MODPACKS[@]}"; do
         fi
         ;;
     *)
-        echo "not specified -install"
+        echo "not specified -update"
         
         ;;
     esac
