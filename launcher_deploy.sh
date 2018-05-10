@@ -1,10 +1,8 @@
 #!/usr/bin/zsh
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $DIR
-launcher=Launcher
 upload_folder=$DIR/.upload/.launcher/
 tools=tools
-
 
 name=launcher
 pack_name=launcher
@@ -12,11 +10,12 @@ json_name=latest
 _fancy=-fancy
 
 cd $DIR
-source $DIR/scripts/server_upload.sh
+# source $DIR/server_upload.sh
+source $DIR/config/upload/config.sh
 mkdir --parent $upload_folder
 
 function copy () {
-    FOLDER="$launcher/$1/build/libs/"
+    FOLDER="$LAUNCHER_SRC/$1/build/libs/"
     ARG2=${2:-$1.jar}
     ARG3=${3:-$upload_folder}
     DEST="$ARG3/$ARG2"
@@ -42,13 +41,13 @@ function json () {
 }
 
 function pack () {
-    FOLDER="$launcher/$1/build/libs/"
+    FOLDER="$LAUNCHER_SRC/$1/build/libs/"
     echo $FOLDER
     ARG2=${2:-$1.jar}
     PACK_FILE="$ARG2.pack"
     DEST="$upload_folder/$PACK_FILE"
     FILE=$( find $FOLDER | grep all | sort -n | tail -1 )
-    VERSION=$( git -C $launcher rev-parse HEAD )
+    VERSION=$( git -C $LAUNCHER_SRC rev-parse HEAD )
         
     
     json_string=$(json $VERSION $PACK_FILE $3)
@@ -63,14 +62,13 @@ function pack () {
 
 cd $DIR
 
-rsync $LAUNCHER_SRC $launcher
-cd $launcher
+cd $LAUNCHER_SRC
 ./gradlew clean build
 
 cd $DIR
 echo
 
-echo "copy files from $launcher into $upload_folder"
+echo "copy files from $LAUNCHER_SRC into $upload_folder"
 
 copy launcher-bootstrap $name.jar
 copy launcher-bootstrap-fancy $name$_fancy.jar

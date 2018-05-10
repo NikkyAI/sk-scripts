@@ -1,11 +1,10 @@
 #!/bin/bash
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-cd $DIR/modpacks
-MODPACKS=( * ) #TODO: load from config
-#modpacks=( fuckitbrokeagain cpack )
+source $DIR/config/upload/config.sh
 
 cd $DIR
+
 for modpack in "${MODPACKS[@]}"; do
     if [ ! -f $DIR/modpacks/$modpack/modpack.json ]; then
         echo "modpack json file not found!"

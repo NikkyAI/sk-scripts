@@ -1,13 +1,11 @@
 #!/bin/bash
 DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-cd $DIR/modpacks
-MODPACKS=( * ) #TODO: load from config
-#modpacks=( fuckitbrokeagain cpack )
+source $DIR/config/upload/config.sh
 
 cd $DIR
 for modpack in "${MODPACKS[@]}"; do
-    if [ ! -f $DIR/modpacks/$modpack/modpack.json ]; then
+    if [ ! -f $MODPACK_DIR/$modpack/modpack.json ]; then
         echo "modpack json file not found!"
         continue
     fi
@@ -31,10 +29,10 @@ for modpack in "${MODPACKS[@]}"; do
     mkdir $upload_folder/ --parents
     # build server
     java -cp tools/launcher-builder.jar com.skcraft.launcher.builder.ServerCopyExport \
-        --source modpacks/$PACK/src \
+        --source $MODPACK_DIR/$PACK/src \
         --dest $upload_folder/
     # merge loaders into upload folder
-    rsync -a --delete $DIR/modpacks/$PACK/loaders/ $upload_folder/loaders/
+    rsync -a --delete $MODPACK_DIR/$PACK/loaders/ $upload_folder/loaders/
     #upload scripts configs etc7
     rm -rf $upload_folder/src/
     [ -d $DIR/server/global/ ] && rsync -a --update $DIR/server/$PACK/ $upload_folder/src/

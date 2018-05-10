@@ -5,6 +5,7 @@ import argparse
 
 from pathlib import Path
 import simplejson as json
+from pprint import pprint
 
 parser = argparse.ArgumentParser(
     description="creates packages.json")
@@ -33,6 +34,8 @@ packages_data = dict(
     minimumVersion=minimum_version,
     packages=packages,
 )
+
+# pprint(packages_data)
 
 packages_path = Path(args.dir, 'packages.json')
 with open(packages_path, 'w') as packages_file:

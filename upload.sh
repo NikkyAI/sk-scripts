@@ -1,9 +1,11 @@
 #!/bin/bash
 upload_folder=.upload/
 static_folder=static/
+DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-cd $(cd -P -- "$(dirname -- "$0")" && pwd -P)
-source config.sh
+source $DIR/config/upload/config.sh
+
+cd $DIR
 
 rsync -av --update $static_folder $upload_folder
 find $upload_folder -type d -empty -delete

@@ -1,17 +1,15 @@
-# voodoo-scripts
+# sk-scripts
 
 ## setuo and getting started
 
-1. install and set up voodoo-pack https://github.com/NikkyAI/voodoo-pack
+1. install and set up voodoo https://github.com/elytra/Voodoo
 
 2. symlink config and modpacks to your pack development environment \
    this is recommended to avoid loosing gitignored files
 
     ```bash
-    dev=~/dev/voodoo-pack
-    ln -s $dev/modpacks/ modpacks/
-    ln -s $dev/config/ config/
-    ln -s $(pwd)/tools $dev/tools
+    dev=~/dev/Voodoo # this would be your Voodoo working directory
+    ln -s $dev/workspace/ worspace/
     ```
 
 3. make sure your fork of sklauncher is ready \
@@ -22,13 +20,13 @@
 
 4. configure the scripts
 
-    copy the sample files
+    copy the sample configs
 
     ```bash
     rsync -a --update samples/ .
     ```
 
-    adapt it
+    **adapt the configuration to fit your folder structure**
 
 4. run
 

@@ -12,13 +12,23 @@ from subprocess import check_output
 
 parser = argparse.ArgumentParser(description="patch output of tree to use the correct urls")
 parser.add_argument("--out", help="output file")
+parser.add_argument("--root", help="root folder")
 parser.add_argument("--pack", help="pack name")
 parser.add_argument("--url", help="base url")
 args, unknown = parser.parse_known_args()
 
 print(check_output(['pwd']))
 
-html = check_output(['tree', 'modpacks/{args.pack}/src'.format(**locals()),
+arguments = ['tree', f'{args.root}/{args.pack}/src',
+                     '-T', 'Directory Listing', # '-P', 'mods|mods/*.*|mods/*', '--matchdirs',
+                     '-I', 'ambience_music|default_config|config|loaders|*.url.txt|*.info.json',
+                     '--sort=name',
+                     '--noreport', '--dirsfirst',
+                     '-H', f'{args.url}modpacks/{args.pack}/src'
+                      ]
+print(" ".join(arguments))
+
+html = check_output(['tree', f'{args.root}/{args.pack}/src',
                      '-T', 'Directory Listing', # '-P', 'mods|mods/*.*|mods/*', '--matchdirs',
                      '-I', 'ambience_music|default_config|config|loaders|*.url.txt|*.info.json',
                      '--sort=name',
@@ -45,7 +55,7 @@ for anchor in soup.find_all('a', href=True):
         match = re.match(pattern, url)
         if match:
             mod = match.group('mod')
-            path = unquote('modpacks/{}/src/{}.url.txt'.format(args.pack, mod))
+            path = unquote(f'modpacks/{args.pack}/src/{mod}.url.txt')
             if os.path.isfile(path):
                 url_txt = open(path, 'r').read()
                 anchor['href'] = url_txt
